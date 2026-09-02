@@ -72,3 +72,30 @@ int main(){
 **4. (5 pts) Write a C++ program using a switch statement to display the day of the week based on a number (1 = Monday, 2 = Tuesday, …, 7 = Sunday).**
 
 [Click me for Code](./Section2/switchcase.cpp)
+
+
+## Section 3
+**1.(4 pts) Write a function declaration and definition for a function calculateArea that takes two double parameters (length and width) and returns the area.**
+
+[Click me for Code](./Section3/area.cpp)
+
+**2. (4 pts) Explain function overloading in C++. Provide a small example with at least two overloaded functions.**
+
+- Function overloading is a feature that allows multiple functions to share the same name within the same scope.
+
+[Click me for Code](./Section3/function-overloading.cpp)
+
+**3. (4 pts) Explain the difference between pass‑by‑value and pass‑by‑reference. When should pass‑by‑reference be used?**
+
+- The difference is that whether the function will receive a copy or a direct alias to the original variable. Pass by reference is useful when we want to change the original data or avoid copying large data
+
+**4. (4 pts) What are default arguments in C++? Write a function example that uses a default argument.**
+
+- A default argument is a fallback value specified in the function declaration that the compiler automatically applies if the caller omits that arguement
+- Example: [Here](./Section3/default-argument.cpp)
+
+
+**5. (4 pts) Write a complete C++ program that swaps two integers using a function swapInts and pass‑by‑reference. The program should print values before and after swapping.**
+
+- Example: [Here](./Section3/swapint.cpp)
+
