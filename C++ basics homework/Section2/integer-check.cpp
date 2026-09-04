@@ -3,7 +3,9 @@ using namespace std;
 
 int main(){
     int number;
+
     cin >> number;
+    
     if (number > 0){
         cout << "This number is postive";
     }else if(number < 0){

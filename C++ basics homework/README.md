@@ -99,3 +99,10 @@ int main(){
 
 - Example: [Here](./Section3/swapint.cpp)
 
+## Section 4
+
+1. (6 pts) Define a class Rectangle with:
+- Private data members: length and width
+- Public member functions: setValues(), getArea(), and getPerimeter()
+- Write a main() function that creates an object of Rectangle and displays the area and perimeter.
+
