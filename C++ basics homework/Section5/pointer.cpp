@@ -12,4 +12,5 @@ int main(){
     cout << &ptr << endl;
     
 
+    return 0;
 }

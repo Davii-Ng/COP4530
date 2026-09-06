@@ -14,4 +14,5 @@ int main(){
     cout << "Before swap: " << a << " " << b << "\n";
     swapInts(a, b);
     cout << "After swap: " << a << " " << b;
+    return 0;
 }

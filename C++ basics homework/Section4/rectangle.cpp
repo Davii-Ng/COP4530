@@ -36,4 +36,5 @@ int main(){
 
     cout << "The area is: " << rectangle1.getArea() << endl;
     cout << "The perimeter is: " << rectangle1.getPerimeter();
+    return 0;
 }

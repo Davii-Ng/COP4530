@@ -23,4 +23,5 @@ int main(){
     // Compiler calls the third version: add(double, double)
     cout << add(5.5, 2.3) << endl;   
 
+    return 0;
 }

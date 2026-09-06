@@ -1,10 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
-#include <iostream>
-using namespace std;
-
 class Rectangle {
     private:
         double length;
@@ -38,4 +34,6 @@ int main(){
     sq.setSides(4.5);
     cout << "Area of the square: "<< sq.getArea() << endl;
     cout << "Perimeter of the square: "<< sq.getPerimeter() << endl;
+
+    return 0;
 }

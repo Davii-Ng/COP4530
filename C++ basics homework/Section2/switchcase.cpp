@@ -1,17 +1,37 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main(){
-    string week[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-
     int day;
 
     cout << "Enter a number of a day in the week: ";
     cin >> day;
 
-    if(1 <= day <= 7){
-        cout << week[day-1];
+    switch(day){
+        case 1:
+            cout << "Monday";
+            break;
+        case 2:
+            cout << "Tuesday";
+            break;
+        case 3:
+            cout << "Wednesday";
+            break;
+        case 4:
+            cout << "Thursday";
+            break;
+        case 5:
+            cout << "Friday";
+            break;
+        case 6:
+            cout << "Saturday";
+            break;
+        case 7:
+            cout << "Sunday";
+            break;
+        default:
+            cout << "Invalid day. Enter a number from 1 to 7.";
+            break;
     }
 
     return 0;
