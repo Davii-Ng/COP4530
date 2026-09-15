@@ -3,24 +3,32 @@
 
 using namespace std; 
 
-struct Node{
-    string val;
-    Node* next;
 
-    Node(string value){
-        val = value;
-        next = nullptr;
-    }
-};
 
 
 class CircularLinkedList{
     private:
+        struct Node{
+        string val;
+        Node* next;
+        Node* prev;
+
+        Node(string value){
+            val = value;
+            next = nullptr;
+            prev = nullptr;
+        }
+    };
+
         Node* head;
+        Node* cursor;
+        int count;
 
     public:
         CircularLinkedList(){
             head = nullptr;
+            cursor = nullptr;
+            count = 0;
         }
 
         ~CircularLinkedList(){
@@ -36,6 +44,10 @@ class CircularLinkedList{
             }
 
             delete head;
+
+            head = nullptr;
+            cursor = nullptr;
+            count = 0;
             return;
         }
         
@@ -44,7 +56,12 @@ class CircularLinkedList{
             
             if (head == nullptr){
                 head = new_node;
+                cursor = new_node;
+
                 new_node->next = head;
+                new_node->prev = head;
+
+                count += 1;
                 return;
             }
 
@@ -53,9 +70,16 @@ class CircularLinkedList{
             while(temp->next != head){
                 temp = temp->next;
             }
-
+            
+            
             temp->next = new_node;
+
             new_node->next = head;
+            new_node->prev = temp;
+
+            head->prev = new_node;
+
+            count += 1;
             return;
         }
 
@@ -65,9 +89,9 @@ class CircularLinkedList{
             }
             Node* temp = head;
             do{
-                temp =  temp->next;
                 cout << temp->val<< endl;
-            }while(temp->next != head);
+                temp =  temp->next;
+            }while(temp != head);
         }
         
 
