@@ -3,41 +3,44 @@
 
 #include <string>
 #include <vector>
-#include "CircularList.h"
+#include "circular-linked-list.h"
 #include "Song.h"
+
+using namespace std;
 
 enum class RepeatMode { All, One };
 
 class Playlist {
 public:
-    Playlist(const std::string& name);
+    Playlist(const string& name);
 
-    bool loadFromFile(const std::string& path);
-    bool saveToFile(const std::string& path) const;
+    bool loadFromFile(const string& path);
+    bool saveToFile(const string& path) const;
 
     void next();
     void previous();
-    void jumpTo(int trackNumber);          // 1-based, as shown on screen
+    void jumpTo(int trackNumber);
 
-    void addSong(const Song& song);        // to the end
-    void queueSong(const Song& song);      // to play immediately next
+    void addSong(const Song& song);
+    void queueSong(const Song& song);
     void removeCurrent();
 
     void shuffle(unsigned seed);
     void toggleRepeat();
 
     const Song& nowPlaying() const;
-    int         nowPlayingNumber() const;  // 1-based
-    std::vector<Song> allSongs() const;
+    int         nowPlayingNumber() const;
+    vector<Song> allSongs() const;
     int         totalSeconds() const;
     RepeatMode  getMode() const;
-    const std::vector<std::string>& recentlyPlayed() const;
+    const vector<string>& recentlyPlayed() const;
 
 private:
-    std::string          name;
+    string          name;
     CircularList<Song>   songs;
-    CircularList<std::string> history;   // fixed-size ring buffer, last 5 titles
+    CircularList<string> history;
     RepeatMode           mode;
+    vector<string>       recentCache;
 
     void recordPlayed(const Song& song);
 };

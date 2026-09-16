@@ -1,0 +1,8 @@
+# title | artist | length in seconds
+Uptown Funk | Bruno Mars | 270
+Just the Way You Are | Bruno Mars | 220
+Grenade | Bruno Mars | 223
+Locked Out of Heaven | Bruno Mars | 233
+Treasure | Bruno Mars | 179
+When I Was Your Man | Bruno Mars | 213
+24K Magic | Bruno Mars | 226
