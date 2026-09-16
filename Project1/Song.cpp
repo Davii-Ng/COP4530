@@ -1,3 +1,8 @@
+/*
+ * Authored by Ngoc Viet Nguyen - U14177860
+ * Implements Song construction, formatting, and playlist-file parsing.
+ */
+
 #include "Song.h"
 using namespace std;
 

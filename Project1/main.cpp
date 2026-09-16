@@ -1,3 +1,8 @@
+/*
+ * Authored by Ngoc Viet Nguyen - U14177860
+ * Runs the console music player interface and handles user input.
+ */
+
 #include <iostream>
 #include <ctime>
 #include "Playlist.h"

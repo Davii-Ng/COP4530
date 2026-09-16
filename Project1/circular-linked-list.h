@@ -1,3 +1,8 @@
+/*
+ * Authored by Minh Duong Nguyen - U80322005
+ * Defines a generic circular doubly-linked list for storing and managing values.
+ */
+
 #ifndef CIRCULAR_LIST_H
 #define CIRCULAR_LIST_H
 
@@ -292,23 +297,6 @@ public:
     // Returns true if the list contains no nodes.
     bool isEmpty() const {
         return head == nullptr;
-    }
-
-    // Prints every value in the list once, starting from head.
-    // This method is useful for testing the list.
-    void printValues() const {
-
-        if (head == nullptr) {
-            return;
-        }
-
-        Node* currentNode = head;
-
-        do {
-            cout << currentNode->value << endl;
-            currentNode = currentNode->next;
-
-        } while (currentNode != head);
     }
 };
 

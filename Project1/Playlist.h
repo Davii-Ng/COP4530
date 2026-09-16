@@ -1,3 +1,8 @@
+/*
+ * Authored by Ngoc Viet Nguyen - U14177860
+ * Declares Playlist class and repeat-mode definitions: loading, saving, navigating, modifying.
+ */
+
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
 
@@ -8,8 +13,12 @@
 
 using namespace std;
 
+/* Defines how the playlist repeats songs. */
 enum class RepeatMode { All, One };
 
+/*
+ * Represents a circular playlist and its playback state.
+ */
 class Playlist {
 public:
     Playlist(const string& name);
@@ -28,7 +37,6 @@ public:
     void shuffle(unsigned seed);
     void toggleRepeat();
 
-    const Song& nowPlaying() const;
     int         nowPlayingNumber() const;
     vector<Song> allSongs() const;
     int         totalSeconds() const;

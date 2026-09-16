@@ -1,3 +1,8 @@
+/*
+ * Authored by Ngoc Viet Nguyen - U14177860
+ * Declares the Song class for storing song information and file formatting.
+ */
+
 #ifndef SONG_H
 #define SONG_H
 
@@ -5,6 +10,9 @@
 
 using namespace std;
 
+/*
+ * Represents a song with its title, artist, and duration.
+ */
 class Song {
 public:
     Song();

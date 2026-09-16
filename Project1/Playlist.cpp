@@ -1,3 +1,8 @@
+/*
+ * Authored by Ngoc Viet Nguyen - U14177860
+ * Implements Playlist operations: file I/O, playback navigation, song management, shuffle, repeat, and history.
+ */
+
 #include "Playlist.h"
 #include <iostream>
 #include <fstream>
@@ -76,7 +81,7 @@ void Playlist::removeCurrent() {
     songs.removeCurrent();
 }
 
-// Manual shuffle using rand(), no <algorithm>/<random> needed.
+// Manual shuffle using rand()
 void Playlist::shuffle(unsigned seed) {
     vector<Song> values = songs.toVector();
     srand(seed);
@@ -93,10 +98,6 @@ void Playlist::shuffle(unsigned seed) {
 
 void Playlist::toggleRepeat() {
     mode = (mode == RepeatMode::All) ? RepeatMode::One : RepeatMode::All;
-}
-
-const Song& Playlist::nowPlaying() const {
-    return songs.current();
 }
 
 int Playlist::nowPlayingNumber() const {
@@ -124,7 +125,7 @@ const vector<string>& Playlist::recentlyPlayed() const {
     return recentCache;
 }
 
-// Fixed-size ring buffer: once full, oldest title is overwritten in place.
+// Fixed-size ring buffer: once full, oldest title is overwritten in place
 void Playlist::recordPlayed(const Song& song) {
     if (history.size() < 5) {
         history.add(song.getTitle());
