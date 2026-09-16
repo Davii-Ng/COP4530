@@ -213,7 +213,7 @@ public:
     }
 
     // Returns a reference to the value at the current cursor position.
-    T& current() {
+    T& current() const {
         return cursor->value;
     }
 
