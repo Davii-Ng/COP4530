@@ -15,6 +15,8 @@ string padRight(const string& s, int width) {
     return result;
 }
 
+// Displays the full player screen: header with track count, 
+// total duration, and repeat mode
 void printMenu(const Playlist& playlist) {
     vector<Song> allSongs = playlist.allSongs();
     int totalSecs = playlist.totalSeconds();
@@ -51,6 +53,7 @@ void printMenu(const Playlist& playlist) {
     cout << "  [w] save      [e] exit\n\n";
 }
 
+// Prompts for and reads an integer from input
 int readInt(const string& prompt) {
     cout << prompt;
     int value;
@@ -70,6 +73,8 @@ string readLine(const string& prompt) {
     return value;
 }
 
+// Loads the playlist, then runs the main menu loop, reading a
+// command each iteration until the user chooses to exit.
 int main() {
     Playlist playlist("Road Trip");
 
