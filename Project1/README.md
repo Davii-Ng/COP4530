@@ -35,7 +35,7 @@ g++ -std=c++17 -Wall -Wextra main.cpp Song.cpp Playlist.cpp -o player
 ./player
 ```
 
-`playlist.txt` must be in the same directory as the `.exe` file.
+`playlist.txt` must be in the same directory as the executable.
 
 ## Controls
 
