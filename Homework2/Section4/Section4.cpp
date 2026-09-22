@@ -4,10 +4,11 @@ using namespace std;
 struct Node {
     int data;
     Node* next;
-    Node(int d) : data(d), next(nullptr) {}
+
+    Node(int value) : data(value), next(nullptr) {}
 };
 
-// Recursively reverse the list, return the new head
+// Recursively reverse the list and return its new head.
 Node* reverseRecursive(Node* head) {
     if (head == nullptr || head->next == nullptr)   // base case
         return head;
@@ -26,6 +27,15 @@ void printList(Node* head) {
     cout << "\n";
 }
 
+// Release every node after the demonstration is complete.
+void deleteList(Node* head) {
+    while (head != nullptr) {
+        Node* next = head->next;
+        delete head;
+        head = next;
+    }
+}
+
 int main() {
     // Build: 1 -> 2 -> 3 -> 4 -> 5
     Node* head = new Node(1);
@@ -42,11 +52,6 @@ int main() {
     cout << "Reversed: ";
     printList(head);
 
+    deleteList(head);
     return 0;
 }
-
-/*
-Output:
-Original: 1 2 3 4 5
-Reversed: 5 4 3 2 1
-*/
