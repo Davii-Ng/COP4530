@@ -68,7 +68,10 @@ g++ -std=c++17 -Wall -Wextra -pedantic cars/*.cpp track/*.cpp app/*.cpp main.cpp
 - An engine must be at the front
 - Total weight must not exceed the engines' pulling capacity
 - A dangerous tanker cannot sit next to a passenger car
-- The train cannot exceed the maximum length
+- The train cannot exceed the maximum length (12 cars)
+- The train must carry something besides locomotives
+
+The siding holds at most 6 cars.
 
 ## Design Notes
 

@@ -6,6 +6,7 @@ namespace Config {
 
 // Train rules
 constexpr int MAX_TRAIN_LENGTH = 12;
+constexpr int SIDING_CAPACITY = 6;
 
 // Locomotive
 constexpr double LOCO_WEIGHT = 60.0;
