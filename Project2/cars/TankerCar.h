@@ -9,7 +9,6 @@ public:
     TankerCar(int id, double cargoTons, bool dangerous);
 
     CarKind kind() const override { return CarKind::Tanker; }
-    string typeName() const override;
     double weight() const override;
 
     // Adds a surcharge if dangerous.

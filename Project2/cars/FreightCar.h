@@ -9,7 +9,6 @@ public:
     FreightCar(int id, double cargoTons);
 
     CarKind kind() const override { return CarKind::Freight; }
-    string typeName() const override;
     double weight() const override;
     double revenue() const override;
     string describe() const override;
