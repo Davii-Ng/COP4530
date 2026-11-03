@@ -1,9 +1,30 @@
 /*
- * Authored by Minh Duong Nguyen
+ * Authored by Minh Duong Nguyen & Ngoc Viet Nguyen
  * Loads the tree file, writes about_tree.txt, then starts the console explorer.
  */
 
-// TODO: Read the tree file path from the command line; print usage if missing.
-// TODO: Build the tree with buildTreeFromFile; print the error and exit on failure.
-// TODO: Call writeReport to generate about_tree.txt.
-// TODO: Call runExplorer to start the console loop.
+#include <iostream>
+#include "src/LinkedTree.h"
+#include "src/TreeParser.h"
+#include "src/TreeReport.h"
+#include "src/TreeExplorer.h"
+using namespace std;
+
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        cout << "Usage: " << argv[0] << " <tree-file>\n";
+        return 1;
+    }
+
+    LinkedTree tree;
+    string error;
+    if (!buildTreeFromFile(argv[1], tree, error)) {
+        cout << "Error: " << argv[1] << ": " << error << "\n";
+        return 1;
+    }
+
+    // TODO: writeReport(tree, "about_tree.txt"); print an error and return 1 if it fails.
+    // TODO: runExplorer(tree);
+
+    return 0;
+}
