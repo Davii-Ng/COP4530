@@ -11,7 +11,6 @@ TreeNode* LinkedTree::addRoot(int position, const string& content) {
     if (root != nullptr) return nullptr;
 
     root = new TreeNode(position, 0, "", content, nullptr);
-    nodeCount = 1;
     return root;
 }
 
@@ -21,7 +20,6 @@ TreeNode* LinkedTree::addChild(TreeNode* parent, int position, const string& edg
 
     TreeNode* child = new TreeNode(position, parent->level + 1, edgeLabel, content, parent);
     parent->children.push_back(child);
-    nodeCount++;
     return child;
 }
 

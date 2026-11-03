@@ -1,5 +1,5 @@
 /*
- * Authored by Minh Duong Nguyen 
+ * Authored by Minh Duong Nguyen
  * Runs the console loop that shows a node's content and its relatives.
  */
 

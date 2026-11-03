@@ -4,6 +4,7 @@
  */
 
 #include "TreeAnalyzer.h"
+#include <algorithm>
 using namespace std;
 
 // Adds internal (or external) nodes of the subtree to result in preorder.
@@ -22,37 +23,27 @@ static int subtreeHeight(const TreeNode* node) {
 
     int tallest = -1;
     for (const TreeNode* child : node->children) {
-        int height = subtreeHeight(child);
-        if (height > tallest) tallest = height;
+        tallest = max(tallest, subtreeHeight(child));
     }
     return tallest + 1;
 }
 
 static bool isBinarySubtree(const TreeNode* node) {
-    if (node->children.size() > 2) return false;
-
-    for (const TreeNode* child : node->children) {
-        if (!isBinarySubtree(child)) return false;
-    }
-    return true;
+    const vector<TreeNode*>& children = node->children;
+    return children.size() <= 2 && all_of(children.begin(), children.end(), isBinarySubtree);
 }
 
 static bool isProperSubtree(const TreeNode* node) {
-    if (node->children.size() == 1 || node->children.size() > 2) return false;
-
-    for (const TreeNode* child : node->children) {
-        if (!isProperSubtree(child)) return false;
-    }
-    return true;
+    const vector<TreeNode*>& children = node->children;
+    return (children.empty() || children.size() == 2) && all_of(children.begin(), children.end(), isProperSubtree);
 }
 
 static bool allLeavesAtDepth(const TreeNode* node, int depth, int leafDepth) {
-    if (node->children.empty()) return depth == leafDepth;
+    const vector<TreeNode*>& children = node->children;
+    if (children.empty()) return depth == leafDepth;
 
-    for (const TreeNode* child : node->children) {
-        if (!allLeavesAtDepth(child, depth + 1, leafDepth)) return false;
-    }
-    return true;
+    return all_of(children.begin(), children.end(),
+                  [&](const TreeNode* child) { return allLeavesAtDepth(child, depth + 1, leafDepth); });
 }
 
 // Assumes a binary tree. A missing child counts as height -1.
@@ -61,8 +52,9 @@ static bool isBalancedSubtree(const TreeNode* node) {
 
     const TreeNode* left = node->children.size() > 0 ? node->children[0] : nullptr;
     const TreeNode* right = node->children.size() > 1 ? node->children[1] : nullptr;
-    int difference = subtreeHeight(left) - subtreeHeight(right);
-    if (difference > 1 || difference < -1) return false;
+    int leftHeight = subtreeHeight(left);
+    int rightHeight = subtreeHeight(right);
+    if (max(leftHeight, rightHeight) - min(leftHeight, rightHeight) > 1) return false;
 
     return isBalancedSubtree(left) && isBalancedSubtree(right);
 }
@@ -92,15 +84,15 @@ vector<const TreeNode*> externalNodesPreorder(const LinkedTree& tree) {
 }
 
 bool isBinary(const LinkedTree& tree) {
-    return tree.getRoot() == nullptr || isBinarySubtree(tree.getRoot());
+    return isBinarySubtree(tree.getRoot());
 }
 
 bool isProper(const LinkedTree& tree) {
-    return tree.getRoot() == nullptr || isProperSubtree(tree.getRoot());
+    return isProperSubtree(tree.getRoot());
 }
 
 bool isPerfect(const LinkedTree& tree) {
-    return isProper(tree) && (tree.getRoot() == nullptr || allLeavesAtDepth(tree.getRoot(), 0, treeHeight(tree)));
+    return isProper(tree) && allLeavesAtDepth(tree.getRoot(), 0, treeHeight(tree));
 }
 
 bool isBalanced(const LinkedTree& tree) {
