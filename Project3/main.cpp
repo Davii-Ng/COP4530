@@ -10,6 +10,8 @@
 #include "src/TreeExplorer.h"
 using namespace std;
 
+// Builds the tree from the file argument, writes the report, then starts the explorer.
+// Returns 1 if the arguments, the tree file or the report output are bad.
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         cout << "Usage: " << argv[0] << " <tree-file>\n";

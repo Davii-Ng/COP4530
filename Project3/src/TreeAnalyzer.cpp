@@ -28,16 +28,19 @@ static int subtreeHeight(const TreeNode* node) {
     return tallest + 1;
 }
 
+// True if every node in the subtree has at most 2 children.
 static bool isBinarySubtree(const TreeNode* node) {
     const vector<TreeNode*>& children = node->children;
     return children.size() <= 2 && all_of(children.begin(), children.end(), isBinarySubtree);
 }
 
+// True if every node in the subtree has 0 or 2 children.
 static bool isProperSubtree(const TreeNode* node) {
     const vector<TreeNode*>& children = node->children;
     return (children.empty() || children.size() == 2) && all_of(children.begin(), children.end(), isProperSubtree);
 }
 
+// True if every leaf of the subtree sits at leafDepth; depth is the node's own depth.
 static bool allLeavesAtDepth(const TreeNode* node, int depth, int leafDepth) {
     const vector<TreeNode*>& children = node->children;
     if (children.empty()) return depth == leafDepth;
@@ -59,42 +62,51 @@ static bool isBalancedSubtree(const TreeNode* node) {
     return isBalancedSubtree(left) && isBalancedSubtree(right);
 }
 
+// Counted from the preorder list so the definition of "internal" lives in one place.
 int countInternalNodes(const LinkedTree& tree) {
     return internalNodesPreorder(tree).size();
 }
 
+// Counted from the preorder list, same as the internal count.
 int countExternalNodes(const LinkedTree& tree) {
     return externalNodesPreorder(tree).size();
 }
 
+// Height of the root, so an empty tree gives -1 and a single node gives 0.
 int treeHeight(const LinkedTree& tree) {
     return subtreeHeight(tree.getRoot());
 }
 
+// Nodes with at least one child, in preorder.
 vector<const TreeNode*> internalNodesPreorder(const LinkedTree& tree) {
     vector<const TreeNode*> result;
     collectPreorder(tree.getRoot(), true, result);
     return result;
 }
 
+// Leaves (nodes with no children), in preorder.
 vector<const TreeNode*> externalNodesPreorder(const LinkedTree& tree) {
     vector<const TreeNode*> result;
     collectPreorder(tree.getRoot(), false, result);
     return result;
 }
 
+// Binary: no node has more than 2 children.
 bool isBinary(const LinkedTree& tree) {
     return isBinarySubtree(tree.getRoot());
 }
 
+// Proper: every node has 0 or 2 children.
 bool isProper(const LinkedTree& tree) {
     return isProperSubtree(tree.getRoot());
 }
 
+// Perfect: proper, and every leaf is as deep as the tree is tall.
 bool isPerfect(const LinkedTree& tree) {
     return isProper(tree) && allLeavesAtDepth(tree.getRoot(), 0, treeHeight(tree));
 }
 
+// Balanced: binary, and the two child heights differ by at most 1 at every node.
 bool isBalanced(const LinkedTree& tree) {
     return isBinary(tree) && isBalancedSubtree(tree.getRoot());
 }

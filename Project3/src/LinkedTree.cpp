@@ -23,20 +23,24 @@ TreeNode* LinkedTree::addChild(TreeNode* parent, int position, const string& edg
     return child;
 }
 
+// Positions are unique, so the first match is the only match.
 const TreeNode* LinkedTree::findByPosition(int position) const {
     return findInSubtree(root, position);
 }
 
+// The parent is the one ancestor reported; the root has none.
 const TreeNode* LinkedTree::getAncestor(const TreeNode* node) const {
     if (node == nullptr) return nullptr;
     return node->parent;
 }
 
+// The first child is the one descendant reported; a leaf has none.
 const TreeNode* LinkedTree::getDescendant(const TreeNode* node) const {
     if (node == nullptr || node->children.empty()) return nullptr;
     return node->children[0];
 }
 
+// The first other child of the parent is the one sibling reported; the root has none.
 const TreeNode* LinkedTree::getSibling(const TreeNode* node) const {
     if (node == nullptr || node->parent == nullptr) return nullptr;
 

@@ -8,6 +8,7 @@
 #include "TreeAnalyzer.h"
 using namespace std;
 
+// Spells a flag the way the report shows it.
 static const char* yesNo(bool value) {
     return value ? "Yes" : "No";
 }
@@ -31,6 +32,7 @@ static void writeNodeList(ostream& out, const string& title, const vector<const 
     }
 }
 
+// Counts and height first, then the two preorder node lists.
 static void writeProperties(ostream& out, const LinkedTree& tree) {
     out << "Root node: " << tree.getRoot()->content << "\n";
     out << "Number of internal nodes: " << countInternalNodes(tree) << "\n";

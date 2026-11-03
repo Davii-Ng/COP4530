@@ -36,6 +36,7 @@ public:
     TreeNode* addRoot(int position, const string& content);
     TreeNode* addChild(TreeNode* parent, int position, const string& edgeLabel, const string& content);
 
+    // nullptr while the tree is empty.
     const TreeNode* getRoot() const { return root; }
 
     // Each returns nullptr if there is no such node.
@@ -44,6 +45,7 @@ public:
     const TreeNode* getDescendant(const TreeNode* node) const;
     const TreeNode* getSibling(const TreeNode* node) const;
 
+    // Internal means at least one child; everything else is external (a leaf).
     static bool isInternal(const TreeNode* node) { return !node->children.empty(); }
 
 private:

@@ -23,6 +23,7 @@ static void printRelative(const string& label, const TreeNode* relative) {
     cout << label << ": " << (relative != nullptr ? relative->content : "None") << "\n";
 }
 
+// Prints the node's content, then its ancestor, descendant and sibling.
 static void showNode(const LinkedTree& tree, const TreeNode* node) {
     cout << "Node's content: " << node->content << "\n";
     printRelative("Ancestor", tree.getAncestor(node));
