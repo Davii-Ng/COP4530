@@ -18,6 +18,7 @@ static bool parsePosition(const string& input, int& position) {
     }
 }
 
+// Relatives are shown by content, not position, and "None" marks a missing one.
 static void printRelative(const string& label, const TreeNode* relative) {
     cout << label << ": " << (relative != nullptr ? relative->content : "None") << "\n";
 }
@@ -29,6 +30,7 @@ static void showNode(const LinkedTree& tree, const TreeNode* node) {
     printRelative("Sibling", tree.getSibling(node));
 }
 
+// Unknown positions and non-numbers get the same message, so the user needs only one rule to learn.
 void runExplorer(const LinkedTree& tree) {
     string input;
     while (true) {
@@ -37,7 +39,7 @@ void runExplorer(const LinkedTree& tree) {
 
         if (input == "exit") break;
 
-        int position;
+        int position = 0;
         const TreeNode* node = parsePosition(input, position) ? tree.findByPosition(position) : nullptr;
         if (node == nullptr) {
             cout << "Invalid input. Please try again.\n";
