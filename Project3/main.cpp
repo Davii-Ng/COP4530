@@ -23,8 +23,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // TODO: writeReport(tree, "about_tree.txt"); print an error and return 1 if it fails.
-    // TODO: runExplorer(tree);
+    if (!writeReport(tree, "about_tree.txt")) {
+        cout << "Error: could not write about_tree.txt\n";
+        return 1;
+    }
+    runExplorer(tree);
 
     return 0;
 }

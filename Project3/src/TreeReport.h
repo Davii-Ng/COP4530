@@ -6,6 +6,11 @@
 #ifndef TREE_REPORT_H
 #define TREE_REPORT_H
 
-// TODO: Declare writeReport(tree, outputPath).
+#include <string>
+#include "LinkedTree.h"
+using namespace std;
+
+// Returns false if the output file cannot be written.
+bool writeReport(const LinkedTree& tree, const string& outputPath);
 
 #endif
