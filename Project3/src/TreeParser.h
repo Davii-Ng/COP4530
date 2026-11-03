@@ -6,6 +6,12 @@
 #ifndef TREE_PARSER_H
 #define TREE_PARSER_H
 
-// TODO: Declare buildTreeFromFile(path, tree); throws std::runtime_error on bad input.
+#include <string>
+#include "LinkedTree.h"
+using namespace std;
+
+// Each line is "level position edge-label content", split by tabs or spaces.
+// The root line may be content only. Returns false and sets error if the file is missing or invalid.
+bool buildTreeFromFile(const string& path, LinkedTree& tree, string& error);
 
 #endif
