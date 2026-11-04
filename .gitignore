@@ -1,2 +1,6 @@
 *.exe
 *.zip
+*.o
+a.out
+decision_tree
+about_tree.txt
